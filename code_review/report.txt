@@ -1,13 +1,13 @@
-./coding_problems/05-friday/friday.py
-./coding_problems/05-friday/test_friday.py
-./coding_problems/02-tuesday/tuesday.py
-./coding_problems/02-tuesday/test_tuesday.py
-./coding_problems/04-thursday/test_thursday.py
 ./coding_problems/04-thursday/thursday.py
-./coding_problems/03-wednesday/test_wednesday.py
-./coding_problems/03-wednesday/wednesday.py
+./coding_problems/04-thursday/test_thursday.py
+./coding_problems/02-tuesday/test_tuesday.py
+./coding_problems/02-tuesday/tuesday.py
+./coding_problems/05-friday/test_friday.py
+./coding_problems/05-friday/friday.py
 ./coding_problems/01-monday/monday.py
 ./coding_problems/01-monday/test_monday.py
+./coding_problems/03-wednesday/wednesday.py
+./coding_problems/03-wednesday/test_wednesday.py
 ./social_news/api.py
 ************* Module api
 social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)

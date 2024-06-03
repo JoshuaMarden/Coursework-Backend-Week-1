@@ -1,7 +1,7 @@
 {
  "files": [
   {
-   "file_name": "./coding_problems/05-friday/friday.py",
+   "file_name": "./coding_problems/04-thursday/thursday.py",
    "errors": [
     "social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)",
     "social_news/api.py:6:0: W0612: Unused variable 'stories' (unused-variable)",
