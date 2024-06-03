@@ -1,0 +1,77 @@
+./coding_problems/05-friday/friday.py
+./coding_problems/05-friday/test_friday.py
+./coding_problems/02-tuesday/tuesday.py
+./coding_problems/02-tuesday/test_tuesday.py
+./coding_problems/04-thursday/test_thursday.py
+./coding_problems/04-thursday/thursday.py
+./coding_problems/03-wednesday/test_wednesday.py
+./coding_problems/03-wednesday/wednesday.py
+./coding_problems/01-monday/monday.py
+./coding_problems/01-monday/test_monday.py
+./social_news/api.py
+************* Module api
+social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)
+social_news/api.py:6:0: W0612: Unused variable 'stories' (unused-variable)
+social_news/api.py:103:0: W0612: Unused variable 'index' (unused-variable)
+social_news/api.py:108:0: W0612: Unused variable 'addstory' (unused-variable)
+social_news/api.py:113:0: W0612: Unused variable 'scrape' (unused-variable)
+social_news/api.py:118:0: W0612: Unused variable 'get_stories' (unused-variable)
+social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)
+social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)
+social_news/api.py:3:0: W0612: Unused variable 'save_to_file' (unused-variable)
+social_news/api.py:3:0: W0612: Unused variable 'load_from_file' (unused-variable)
+social_news/api.py:4:0: W0612: Unused variable 'datetime' (unused-variable)
+social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)
+social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)
+social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)
+social_news/api.py:3:0: W0611: Unused save_to_file imported from storage (unused-import)
+social_news/api.py:3:0: W0611: Unused load_from_file imported from storage (unused-import)
+social_news/api.py:4:0: W0611: Unused datetime imported from datetime (unused-import)
+
+-----------------------------------
+Your code has been rated at 0.00/10
+
+./social_news/news_scraper.py
+************* Module news_scraper
+social_news/news_scraper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)
+social_news/news_scraper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+social_news/news_scraper.py:9:4: W0612: Unused variable 'html' (unused-variable)
+social_news/news_scraper.py:13:21: W0613: Unused argument 'domain_url' (unused-argument)
+social_news/news_scraper.py:15:4: W0612: Unused variable 'soup' (unused-variable)
+social_news/news_scraper.py:13:0: W0612: Unused variable 'parse_stories_bs' (unused-variable)
+social_news/news_scraper.py:23:4: W0612: Unused variable 'bbc_html_doc' (unused-variable)
+social_news/news_scraper.py:2:0: W0612: Unused variable 'datetime' (unused-variable)
+social_news/news_scraper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)
+
+-----------------------------------
+Your code has been rated at 1.33/10
+
+./social_news/storage.py
+************* Module storage
+social_news/storage.py:3:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
+social_news/storage.py:1:17: W0613: Unused argument 'data' (unused-argument)
+social_news/storage.py:8:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
+social_news/storage.py:6:19: W0613: Unused argument 'data' (unused-argument)
+social_news/storage.py:1:0: W0612: Unused variable 'save_to_file' (unused-variable)
+social_news/storage.py:6:0: W0612: Unused variable 'load_from_file' (unused-variable)
+
+-----------------------------------
+Your code has been rated at 0.00/10
+
+./pokemon/app.py
+************* Module app
+pokemon/app.py:29:5: W0511: TODO: return a JSON object of all pokemon. (fixme)
+pokemon/app.py:13:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+pokemon/app.py:17:6: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+pokemon/app.py:13:5: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+pokemon/app.py:17:6: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+pokemon/app.py:14:0: W0612: Unused variable 'pokemon_data' (unused-variable)
+pokemon/app.py:18:0: W0612: Unused variable 'pokemon_types' (unused-variable)
+pokemon/app.py:22:0: W0612: Unused variable 'pokemon' (unused-variable)
+pokemon/app.py:28:0: W0612: Unused variable 'get_all_pokemon' (unused-variable)
+pokemon/app.py:7:0: W0612: Unused variable 'dumps' (unused-variable)
+pokemon/app.py:7:0: W0611: Unused dumps imported from json (unused-import)
+
+-----------------------------------
+Your code has been rated at 1.54/10
+
