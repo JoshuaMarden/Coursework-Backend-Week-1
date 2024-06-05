@@ -4,7 +4,7 @@ def is_valid(s: str) -> bool:
 
     s_simple = set([char for char in list(s) if char in brackets])
 
-    for index, bracket in enumerate(brackets[:4]):
+    for index, bracket in enumerate(brackets[:3]):
         if bracket in s_simple and not brackets[index+3] in s_simple:
             return False
 
