@@ -3,25 +3,34 @@
   {
    "file_name": "./coding_problems/04-thursday/thursday.py",
    "errors": [
+    "social_news/passByRefFunc.py:1:0: C0103: Module name \"passByRefFunc\" doesn't conform to '(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$' pattern (invalid-name)"
+   ],
+   "score": 94.1
+  },
+  {
+   "file_name": "./social_news/api.py",
+   "errors": [
+    "social_news/api.py:158:12: W0622: Redefining built-in 'id' (redefined-builtin)",
+    "social_news/api.py:138:8: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)",
+    "social_news/api.py:146:12: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)",
+    "social_news/api.py:131:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)",
+    "social_news/api.py:177:17: W0622: Redefining built-in 'id' (redefined-builtin)",
+    "social_news/api.py:199:17: W0622: Redefining built-in 'id' (redefined-builtin)",
+    "social_news/api.py:199:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)",
     "social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)",
-    "social_news/api.py:6:0: W0612: Unused variable 'stories' (unused-variable)",
     "social_news/api.py:103:0: W0612: Unused variable 'index' (unused-variable)",
     "social_news/api.py:108:0: W0612: Unused variable 'addstory' (unused-variable)",
     "social_news/api.py:113:0: W0612: Unused variable 'scrape' (unused-variable)",
-    "social_news/api.py:118:0: W0612: Unused variable 'get_stories' (unused-variable)",
-    "social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)",
-    "social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)",
+    "social_news/api.py:131:0: W0612: Unused variable 'manage_stories' (unused-variable)",
+    "social_news/api.py:177:0: W0612: Unused variable 'modify_story' (unused-variable)",
+    "social_news/api.py:199:0: W0612: Unused variable 'change_votes' (unused-variable)",
     "social_news/api.py:3:0: W0612: Unused variable 'save_to_file' (unused-variable)",
     "social_news/api.py:3:0: W0612: Unused variable 'load_from_file' (unused-variable)",
-    "social_news/api.py:4:0: W0612: Unused variable 'datetime' (unused-variable)",
     "social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)",
-    "social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)",
-    "social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)",
     "social_news/api.py:3:0: W0611: Unused save_to_file imported from storage (unused-import)",
-    "social_news/api.py:3:0: W0611: Unused load_from_file imported from storage (unused-import)",
-    "social_news/api.py:4:0: W0611: Unused datetime imported from datetime (unused-import)"
+    "social_news/api.py:3:0: W0611: Unused load_from_file imported from storage (unused-import)"
    ],
-   "score": 0.0
+   "score": 75.6
   },
   {
    "file_name": "./social_news/news_scraper.py",
@@ -68,5 +77,5 @@
    "score": 15.4
   }
  ],
- "average_score": 7.2
+ "average_score": 39.7
 }
