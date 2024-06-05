@@ -2,101 +2,20 @@ import psycopg2
 from flask import Flask, current_app, jsonify, request
 from storage import save_to_file, load_from_file
 from datetime import datetime, timezone
-
-stories = [
-    {
-        "created_at": "Sun, 20 Mar 2022 08:43:21 GMT",
-        "id": 1,
-        "score": 42,
-        "title": "Voters Overwhelmingly Back Community Broadband in Chicago and Denver",
-        "updated_at": "Tue, 22 Mar 2022 14:58:45 GMT",
-        "url": "https://www.vice.com/en/article/xgzxvz/voters-overwhelmingly-back-community-broadband-in-chicago-and-denver",
-        "website": "vice.com"
-    },
-    {
-        "created_at": "Wed, 16 Mar 2022 11:05:33 GMT",
-        "id": 2,
-        "score": 23,
-        "title": "eBird: A crowdsourced bird sighting database",
-        "updated_at": "Fri, 18 Mar 2022 13:20:47 GMT",
-        "url": "https://ebird.org/home",
-        "website": "ebird.org"
-    },
-    {
-        "created_at": "Sat, 09 Apr 2022 09:11:52 GMT",
-        "id": 3,
-        "score": 471,
-        "title": "Karen Gillan teams up with Lena Headey and Michelle Yeoh in assassin thriller Gunpowder Milkshake",
-        "updated_at": "Mon, 11 Apr 2022 17:13:29 GMT",
-        "url": "https://www.empireonline.com/movies/news/gunpowder-milk-shake-lena-headey-karen-gillan-exclusive/",
-        "website": "empireonline.com"
-    },
-    {
-        "created_at": "Mon, 07 Feb 2022 06:21:19 GMT",
-        "id": 4,
-        "score": 101,
-        "title": "Pfizers coronavirus vaccine is more than 90 percent effective in first analysis, company reports",
-        "updated_at": "Wed, 09 Feb 2022 08:44:22 GMT",
-        "url": "https://www.cnbc.com/2020/11/09/covid-vaccine-pfizer-drug-is-more-than-90percent-effective-in-preventing-infection.html",
-        "website": "cnbc.com"
-    },
-    {
-        "created_at": "Tue, 01 Mar 2022 12:31:45 GMT",
-        "id": 5,
-        "score": 87,
-        "title": "Budget: Pensions to get boost as tax-free limit to rise",
-        "updated_at": "Thu, 03 Mar 2022 15:29:58 GMT",
-        "url": "https://www.bbc.co.uk/news/business-64949083",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Fri, 25 Mar 2022 10:22:36 GMT",
-        "id": 6,
-        "score": 22,
-        "title": "Ukraine war: Zelensky honours unarmed soldier filmed being shot",
-        "updated_at": "Sun, 27 Mar 2022 12:55:19 GMT",
-        "url": "https://www.bbc.co.uk/news/world-europe-64938934",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Thu, 17 Mar 2022 09:28:42 GMT",
-        "id": 7,
-        "score": 313,
-        "title": "Willow Project: US government approves Alaska oil and gas development",
-        "updated_at": "Sat, 19 Mar 2022 11:34:53 GMT",
-        "url": "https://www.bbc.co.uk/news/world-us-canada-64943603",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Wed, 23 Feb 2022 07:15:59 GMT",
-        "id": 8,
-        "score": 2,
-        "title": "SVB and Signature Bank: How bad is US banking crisis and what does it mean?",
-        "updated_at": "Fri, 25 Feb 2022 09:41:22 GMT",
-        "url": "https://www.bbc.co.uk/news/business-64951630",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Sat, 26 Feb 2022 14:38:11 GMT",
-        "id": 9,
-        "score": 131,
-        "title": "Aukus deal: Summit was projection of power and collaborative intent",
-        "updated_at": "Mon, 28 Feb 2022 16:02:45 GMT",
-        "url": "https://www.bbc.co.uk/news/uk-politics-64948535",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Thu, 24 Mar 2022 13:49:27 GMT",
-        "id": 10,
-        "score": 41,
-        "title": "Dancer whose barefoot video went viral meets Camilla",
-        "updated_at": "Sat, 26 Mar 2022 15:51:34 GMT",
-        "url": "https://www.bbc.co.uk/news/uk-england-birmingham-64953863",
-        "website": "bbc.co.uk"
-    }
-]
+import json
 
 app = Flask(__name__)
+
+
+def load_saved_stories():
+    with open("stories.json", 'r') as f:
+        stories_data = json.load(f)
+    return stories_data
+
+
+def save_stories(stories):
+    with open("stories.json", 'w') as f:
+        json.dump(stories, f)
 
 
 @app.route("/", methods=["GET"])
@@ -129,6 +48,9 @@ def sort_stories(sort_category: str, order: str, stories: list) -> list:
 
 @app.route('/stories', methods=["GET", "POST", "DELETE"])
 def manage_stories():
+
+    stories = load_saved_stories()
+
     if request.method == "GET":
         args = request.args.to_dict()
         search = args.get("search")
@@ -160,7 +82,6 @@ def manage_stories():
             if new_id not in used_ids:
                 break
 
-        # Get the current date and time
         current_time = datetime.now(timezone.utc)
         formatted_time = current_time.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
@@ -176,6 +97,8 @@ def manage_stories():
 @ app.route('/stories/<int:id>/', methods=['PATCH', "DELETE"])
 def modify_story(id):
 
+    stories = load_saved_stories()
+
     if request.method == "PATCH":
 
         for story in stories:
@@ -184,12 +107,17 @@ def modify_story(id):
             if story["id"] == id:
                 story["url"] = data["url"]
                 story["title"] = data["title"]
+                if story["url"] == "" or story["title"] == "":
+                    return "Null not allowed in story details", 418
+
+                save_stories(stories)
                 return jsonify(story), 200
 
     if request.method == "DELETE":
         for index, story in enumerate(stories):
             if story["id"] == id:
                 deleted_story = stories.pop(index)
+                save_stories(stories)
                 return jsonify(deleted_story), 200
 
     return jsonify("Article not found"), 404
@@ -197,15 +125,16 @@ def modify_story(id):
 
 @ app.route('/stories/<int:id>/votes', methods=['POST'])
 def change_votes(id):
+
+    stories = load_saved_stories()
+
     if request.method == "POST":
         data = request.json
 
-        # Check if the data contains the direction key
         if "direction" not in data:
             return jsonify({"error": True,
                             "message": "Missing 'direction' key"}), 400
 
-        # Find the story with the given id
         for story in stories:
             if story["id"] == id:
                 current_score = story["score"]
@@ -221,6 +150,7 @@ def change_votes(id):
                     return jsonify({"error": "Invalid direction value"}), 400
 
                 # Return the updated story
+                save_stories(stories)
                 return jsonify(story), 200
 
         # If the story is not found
