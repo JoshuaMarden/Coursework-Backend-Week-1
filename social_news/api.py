@@ -139,11 +139,9 @@ def change_votes(id):
                 else:
                     return jsonify({"error": "Invalid direction value"}), 400
 
-                # Return the updated story
                 save_stories(stories)
                 return jsonify(story), 200
 
-        # If the story is not found
         return jsonify({"error": True,
                         "message": "Story not found"}), 404
 

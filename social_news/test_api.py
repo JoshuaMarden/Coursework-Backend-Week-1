@@ -95,3 +95,43 @@ def test_delete_story(fake_load_saved_stories, fake_save_stories,
     newly_saved_stories = fake_save_stories.call_args[0][0]
     assert not any(
         story["id"] == id_to_delete for story in newly_saved_stories)
+
+
+@patch("api.save_stories")
+@patch("api.load_saved_stories")
+def test_post_upvote(fake_load_saved_stories, fake_save_stories,
+                     sample_news_stories, test_client):
+
+    upvote = {"direction": "up"}
+
+    id_to_upvote = sample_news_stories[0]["id"]
+    starting_vote_count = sample_news_stories[0]["score"]
+
+    fake_load_saved_stories.return_value = sample_news_stories
+    response = test_client.post(f"/stories/{id_to_upvote}/votes", json=upvote)
+
+    assert response.status_code == 200
+    assert fake_save_stories.call_count == 1
+
+    newly_saved_stories = fake_save_stories.call_args[0][0]
+    assert newly_saved_stories[0]["score"] == starting_vote_count + 1
+
+
+@patch("api.save_stories")
+@patch("api.load_saved_stories")
+def test_post_downvote(fake_load_saved_stories, fake_save_stories,
+                       sample_news_stories, test_client):
+
+    upvote = {"direction": "down"}
+
+    id_to_upvote = sample_news_stories[0]["id"]
+    starting_vote_count = sample_news_stories[0]["score"]
+
+    fake_load_saved_stories.return_value = sample_news_stories
+    response = test_client.post(f"/stories/{id_to_upvote}/votes", json=upvote)
+
+    assert response.status_code == 200
+    assert fake_save_stories.call_count == 1
+
+    newly_saved_stories = fake_save_stories.call_args[0][0]
+    assert newly_saved_stories[0]["score"] == starting_vote_count - 1
