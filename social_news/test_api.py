@@ -77,3 +77,21 @@ def test_patch_story(fake_load_saved_stories, fake_save_stories,
     # Assertions to ensure the new story was processed correctly
     assert newly_added_story["title"] == sample_new_story["title"]
     assert newly_added_story["url"] == sample_new_story["url"]
+
+
+@patch("api.save_stories")
+@patch("api.load_saved_stories")
+def test_delete_story(fake_load_saved_stories, fake_save_stories,
+                      sample_news_stories, test_client):
+
+    id_to_delete = sample_news_stories[0]["id"]
+
+    fake_load_saved_stories.return_value = sample_news_stories
+    response = test_client.delete(f"/stories/{id_to_delete}/")
+
+    assert response.status_code == 200
+    assert fake_save_stories.call_count == 1
+
+    newly_saved_stories = fake_save_stories.call_args[0][0]
+    assert not any(
+        story["id"] == id_to_delete for story in newly_saved_stories)
