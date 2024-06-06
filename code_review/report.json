@@ -42,12 +42,14 @@
     "social_news/test_api.py:33:0: W0612: Unused variable 'test_post_new_story' (unused-variable)",
     "social_news/test_api.py:58:0: W0612: Unused variable 'test_patch_story' (unused-variable)",
     "social_news/test_api.py:84:0: W0612: Unused variable 'test_delete_story' (unused-variable)",
+    "social_news/test_api.py:102:0: W0612: Unused variable 'test_post_upvote' (unused-variable)",
+    "social_news/test_api.py:122:0: W0612: Unused variable 'test_post_downvote' (unused-variable)",
     "social_news/test_api.py:1:0: W0612: Unused variable 'app' (unused-variable)",
     "social_news/test_api.py:1:0: W0611: Unused app imported from api (unused-import)",
     "social_news/test_api.py:2:0: W0611: Unused import json (unused-import)",
     "social_news/test_api.py:4:0: W0611: Unused import storage (unused-import)"
    ],
-   "score": 75.0
+   "score": 79.7
   },
   {
    "file_name": "./social_news/news_scraper.py",
@@ -75,5 +77,5 @@
    "score": 50.0
   }
  ],
- "average_score": 57.1
+ "average_score": 58.0
 }
