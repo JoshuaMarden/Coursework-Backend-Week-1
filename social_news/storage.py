@@ -1,8 +1,12 @@
-def save_to_file(data: ...) -> ...:
-    """Save the data to a file called stories.json"""
-    ...
+import json
 
 
-def load_from_file(data: ...) -> ...:
-    """Load the stories from a file called stories.json"""
-    ...
+def load_saved_stories():
+    with open("stories.json", 'r') as f:
+        stories_data = json.load(f)
+    return stories_data
+
+
+def save_stories(stories):
+    with open("stories.json", 'w') as f:
+        json.dump(stories, f, indent=4)

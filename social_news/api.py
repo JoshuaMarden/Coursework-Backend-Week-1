@@ -1,21 +1,10 @@
 import psycopg2
 from flask import Flask, current_app, jsonify, request
-from storage import save_to_file, load_from_file
+from storage import load_saved_stories, save_stories
 from datetime import datetime, timezone
 import json
 
 app = Flask(__name__)
-
-
-def load_saved_stories():
-    with open("stories.json", 'r') as f:
-        stories_data = json.load(f)
-    return stories_data
-
-
-def save_stories(stories):
-    with open("stories.json", 'w') as f:
-        json.dump(stories, f)
 
 
 @app.route("/", methods=["GET"])
@@ -46,7 +35,7 @@ def sort_stories(sort_category: str, order: str, stories: list) -> list:
     return sorted(stories, key=lambda x: x[sort_category], reverse=order_bool)
 
 
-@app.route('/stories', methods=["GET", "POST", "DELETE"])
+@app.route('/stories', methods=["GET", "POST"])
 def manage_stories():
 
     stories = load_saved_stories()
@@ -91,6 +80,7 @@ def manage_stories():
                      "website": data["url"][:data["url"].find("/", 10)]}
 
         stories.append(new_story)
+        save_stories(stories)
         return jsonify(new_story), 200
 
 
