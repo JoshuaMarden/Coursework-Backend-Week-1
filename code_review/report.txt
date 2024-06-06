@@ -48,13 +48,14 @@ social_news/test_api.py:4:0: W0612: Unused variable 'storage' (unused-variable)
 social_news/test_api.py:8:0: W0612: Unused variable 'test_get_stories' (unused-variable)
 social_news/test_api.py:33:0: W0612: Unused variable 'test_post_new_story' (unused-variable)
 social_news/test_api.py:58:0: W0612: Unused variable 'test_patch_story' (unused-variable)
+social_news/test_api.py:84:0: W0612: Unused variable 'test_delete_story' (unused-variable)
 social_news/test_api.py:1:0: W0612: Unused variable 'app' (unused-variable)
 social_news/test_api.py:1:0: W0611: Unused app imported from api (unused-import)
 social_news/test_api.py:2:0: W0611: Unused import json (unused-import)
 social_news/test_api.py:4:0: W0611: Unused import storage (unused-import)
 
 -----------------------------------
-Your code has been rated at 7.22/10
+Your code has been rated at 7.50/10
 
 ./social_news/news_scraper.py
 ************* Module news_scraper
