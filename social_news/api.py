@@ -1,8 +1,9 @@
 import psycopg2
+import json
 from flask import Flask, current_app, jsonify, request
 from storage import load_saved_stories, save_stories
 from datetime import datetime, timezone
-import json
+import news_scraper
 
 app = Flask(__name__)
 
@@ -37,6 +38,8 @@ def sort_stories(sort_category: str, order: str, stories: list) -> list:
 
 @app.route('/stories', methods=["GET", "POST"])
 def manage_stories():
+    """Retrieves and posts new news stories"""
+    news_scraper.main()
 
     stories = load_saved_stories()
 
@@ -86,7 +89,8 @@ def manage_stories():
 
 @ app.route('/stories/<int:id>/', methods=['PATCH', "DELETE"])
 def modify_story(id):
-
+    """Modify or delete existing stories"""
+    news_scraper.main()
     stories = load_saved_stories()
 
     if request.method == "PATCH":
@@ -115,7 +119,7 @@ def modify_story(id):
 
 @ app.route('/stories/<int:id>/votes', methods=['POST'])
 def change_votes(id):
-
+    """Increase or lower votes"""
     stories = load_saved_stories()
 
     if request.method == "POST":
@@ -147,4 +151,5 @@ def change_votes(id):
 
 
 if __name__ == "__main__":
+    news_scraper.main()
     app.run(debug=True, host="0.0.0.0", port=5000)

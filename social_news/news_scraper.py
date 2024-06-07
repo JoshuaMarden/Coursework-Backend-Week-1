@@ -7,7 +7,7 @@ import requests
 
 def get_html(url: str) -> str:
     response = requests.get(url)
-    response.raise_for_status()  # Raises an HTTPError for bad responses
+    response.raise_for_status()
     return response.text
 
 
@@ -53,16 +53,24 @@ def update_stories(titles_and_urls: list) -> None:
                      "id": new_id, "score": 0,
                      "title": details[0], "url": details[1],
                      "website": details[1][:details[1].find("/", 10)]}
-        stories.append(new_story)
 
-        print(new_story)
+        url_to_append = new_story.get("url")
+        url_already_exists = any(url_to_append == story.get("url")
+                                 for story in stories)
+
+        if not url_already_exists:
+            stories.append(new_story)
 
     save_stories(stories)
 
 
-if __name__ == "__main__":
+def main():
     trading_view_url = "https://www.tradingview.com/news/"
     trading_view_html_doc = get_html(trading_view_url)
 
     story_details = parse_stories_bs(trading_view_html_doc)
     update_stories(story_details)
+
+
+if __name__ == "__main__":
+    main()

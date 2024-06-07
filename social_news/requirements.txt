@@ -1,5 +1,6 @@
+pytest
+pylint
 flask
 psycopg2-binary
 flask-cors
-pytest
-pylint
+
